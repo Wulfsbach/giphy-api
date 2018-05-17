@@ -1,47 +1,85 @@
+var topics = ["Mass Effect" , "Dragon Age" , "God Of War", "Skyrim"];
 
 
 
-var Topics= ["Star Wars", "Mass Effect", "Dragon Age", "Halo"];
+function displayGif(){
+    $("#gifs-show-here").empty();
+    var game = $(this).attr("data-topic");
+    var queryURL="https://api.giphy.com/v1/gifs/search?q=" + game + "&api_key=WGb3CFgvuLaFdueJlggd9q05IMQt8yxS&limit=10";
 
-function buttonCreation(){
-$("#button-section").empty();
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response){
+        // console.log(queryUrl);
+        // console.log(response);
+      
+      
+var results = response.data;
 
-for (var i = 0; i <Topics.length; i++){
-var button = $("<button>");
-btn.addClass("topic");
-btn.attr("data-topic", Topics[i]);
-btn.text(Topics[i]);
-$("#button-section").prepend(btn);
-$("#gif").val('');
+for (var i = 0; i <results.length; i++){
+    var GameImages = results[i].images.fixed_height.url
+    var gameDiv= $("<div>");
+    var gameText= $("<p>").text("Rating: " + results[i].rating);
+    var gameImage=$('<img src="' + GameImages+'">');
+
+    gameDiv.append(gameText);
+    gameDiv.append(gameImage);
+
+    $("#gifs-show-here").append(gameDiv);
 }
-};
+
+
+        })
+    };
 
 
 
-$("#add-gif").on("click", function() {
-    var topic =$(this).attr("data-topic");
-    var queryUrl ="https://api.giphy.com/v1/gifs/search?q=" +
-    topic + "&api_key=WGb3CFgvuLaFdueJlggd9q05IMQt8yxS$limit=10";
 
 
 
-$.ajax({
-    url: queryUrl,
-    method: "GET"
-}).then(function(response)
-{
-console.log(response);
 
-var search = response.data;
-for( var i = 0; i < Topics.length; i++){
-    var gifDiv =$("<div>");
-        var gifText= $("<p>"+ search[i].rating + "</p>");
-        var gifImage= $("<img>");
-        var imageURL= search[i].images.fixed_height.url;
-        $(gifImage).attr("src", imageURL);
-        $(gifDiv).append(p);
-        $(gifDiv).append(gifImage);
-        $("#gifs-show-here").append(gifDiv);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function createButtons(){
+$('#buttonSection').empty();
+    for( var i= 0; i < topics.length; i++){
+        var gameBtn= $('<button>');
+        gameBtn.addClass('gameBtn');
+        gameBtn.attr('data-topic', topics[i]);
+        gameBtn.text(topics[i]);
+        $('#buttonSection').append(gameBtn);
     }
+}
+
+
+$("#addGif").on("click", function(event){
+    event.preventDefault();
+    var game = $("#gif").val().trim();
+    topics.push(game);
+    createButtons();
 })
-})
+
+
+
+
+
+
+$(document).on('click','.gameBtn', displayGif);
+createButtons();
