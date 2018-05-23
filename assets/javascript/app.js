@@ -18,18 +18,18 @@ function displayGif() {
         var results = response.data;
 
         for (var i = 0; i < results.length; i++) {
-            var GameImages = results[i].images.fixed_height_still.url;
-            var GameImages2 = results[i].images.fixed_height.url;
+            
+            
             var gameDiv = $("<div>");
             var gameText = $("<p>").text("Rating: " + results[i].rating);
             
             var gameImage =$("<img>");
-            gameImage.addClass('itMoves');
-            gameImage.attr("src", GameImages);
-            gameImage.attr("data-still", GameImages);
-            gameImage.attr("data-animate", GameImages2);
-            gameImage.attr("data-state", "still");
-           
+          
+            gameImage.attr('src', results[i].images.fixed_height_still.url);
+            gameImage.attr('data-still', results[i].images.fixed_height_still.url);
+            gameImage.attr('data-animate',results[i].images.fixed_height.url);
+            gameImage.attr('data-state', 'still');
+            gameImage.addClass('Moving');
 
             gameDiv.append(gameText);
             gameDiv.append(gameImage);
@@ -43,17 +43,17 @@ function displayGif() {
 
     })
 };
-$('.itMoves').on("click", function () {
-    var mode = $(this).attr("data-state");
+$('#gifs-show-here').on("click",'.Moving', function () {
+    var state = $(this).attr('data-state');
 
-    if (mode === "still") {
-        $(this).attr("src", $(this).attr("data-animate"));
-        $(this).attr("data-state", "animate");
+    if (state === 'still') {
+        $(this).attr("src", $(this).attr('data-animate'));
+        $(this).attr("data-state", 'animate');
     } else {
         $(this).attr("src", $(this).attr("data-still"));
         $(this).attr("data-state", "still");
     }
-})
+});
 
 
 
@@ -67,7 +67,7 @@ function createButtons() {
         gameBtn.text(topics[i]);
         $('#buttonSection').append(gameBtn);
     }
-}
+};
 
 
 $("#addGif").on("click", function (event) {
@@ -75,7 +75,7 @@ $("#addGif").on("click", function (event) {
     var game = $("#gif").val().trim();
     topics.push(game);
     createButtons();
-})
+});
 
 
 
