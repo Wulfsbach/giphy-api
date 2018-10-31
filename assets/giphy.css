@@ -1,0 +1,31 @@
+
+
+#buttonSection{
+
+    display: flex;
+	justify-content: center;
+flex-wrap: wrap;
+}
+
+
+
+form {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	flex-wrap: wrap;
+}
+
+#gifs-show-here{
+   
+    display: flex;
+	justify-content: center;
+    flex-wrap: wrap; 
+    
+}
+
+.Moving{
+    border: 5px solid blueviolet;
+    margin: 5px;
+    
+}
