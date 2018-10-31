@@ -1,19 +1,26 @@
 
 
+body {
+	background-image: url("./images/nebula.jpg");
+	font-family: 'Poppins', sans-serif;
+	min-height: 100vh;
+}
+
 #buttonSection{
 
     display: flex;
 	justify-content: center;
 flex-wrap: wrap;
+padding:10px;
 }
-
-
 
 form {
 	display: flex;
 	justify-content: center;
 	padding: 20px;
-	flex-wrap: wrap;
+    flex-wrap: wrap;
+    color: white;
+    
 }
 
 #gifs-show-here{
@@ -25,7 +32,51 @@ form {
 }
 
 .Moving{
-    border: 5px solid blueviolet;
-    margin: 5px;
+    border: 5px solid red;
+    margin: 80px;
+   
+}
+
+
+.Moving[data-state="animate"] {
+    border: 5px solid greenyellow;
     
+}
+h1{
+    font-family: 'Poppins', sans-serif;
+	text-align: center;
+	font-size: 120%;
+    text-transform: uppercase;
+    color: white;
+	
+margin: 10px;
+}
+
+.gameBtn{
+    display:inline-block;
+    padding: 0.5em 3em;
+    border:0.16em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    text-transform:uppercase;
+font-family:'Roboto',sans-serif;
+font-weight:400;
+color:rgb(8, 8, 8);
+text-align:center;
+transition: all 0.15s;
+}
+#addGif{
+    display:inline-block;
+    padding: 0.2em 0.5em;
+    border:0.16em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    text-decoration:none;
+    text-transform:uppercase;
+font-family:'Roboto',sans-serif;
+font-weight:100;
+color:rgb(4, 4, 4);
+text-align:center;
+transition: all 0.15s;
 }

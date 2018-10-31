@@ -21,7 +21,8 @@ function displayGif() {
             
             
             var gameDiv = $("<div>");
-            var gameText = $("<p>").text("Rating: " + results[i].rating);
+            
+            var gameText = $("<h1>").text("Rating: " + results[i].rating);
             
             var gameImage =$("<img>");
           
